@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/game_board.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +10,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: GameBoard(),
-    );
+    return MaterialApp(
+        theme: ThemeData(
+          fontFamily: 'Gordita',
+        ),
+        debugShowCheckedModeBanner: false,
+        /* home: GameBoard(
+        gameLevel: 200,
+      ),*/
+        home: const HomeScreen());
   }
 }
