@@ -32,6 +32,11 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  // Logo Image
+                  Image.asset(
+                    'assets/images/logo.png',
+                    width: 500,
+                  ),
                   const Text(
                     'BLOCK RUSH',
                     textAlign: TextAlign.center,
