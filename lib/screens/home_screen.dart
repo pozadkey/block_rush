@@ -34,6 +34,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   const Text(
                     'BLOCK RUSH',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color.fromARGB(255, 255, 255, 255),
                       fontSize: 54,

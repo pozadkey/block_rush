@@ -15,9 +15,6 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Gordita',
         ),
         debugShowCheckedModeBanner: false,
-        /* home: GameBoard(
-        gameLevel: 200,
-      ),*/
         home: const HomeScreen());
   }
 }
