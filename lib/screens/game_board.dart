@@ -553,7 +553,6 @@ class _GameBoardState extends State<GameBoard> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
@@ -603,7 +602,7 @@ class _GameBoardState extends State<GameBoard> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             // Game Grid
@@ -639,7 +638,7 @@ class _GameBoardState extends State<GameBoard> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             // Game Controls
