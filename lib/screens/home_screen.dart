@@ -36,9 +36,12 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // Logo Image
-                      Image.asset(
-                        'assets/images/logo.png',
-                        width: 500,
+                      Hero(
+                        tag: 'logoTag', // Unique tag for the Hero widget
+                        child: Image.asset(
+                          'assets/images/logo.png',
+                          width: 500,
+                        ),
                       ),
                       Text(
                         'BLOCK RUSH',
@@ -67,19 +70,24 @@ class HomeScreen extends StatelessWidget {
       BuildContext context, String label, int gameLevel, Color color) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: MyButton(
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const GameBoard(),
-          ),
+      child: Hero(
+        tag: 'startButtonTag', // Unique tag for the Hero widget
+        child: MyButton(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const GameBoard(),
+              ),
+            );
+          },
+          text: label,
+          bgColor: color,
+          buttonWidth: 200,
+          padding: 16.0,
+          textColor: Colors.white,
+          borderRadius: 10.0,
         ),
-        text: label,
-        bgColor: color,
-        buttonWidth: 200,
-        padding: 16.0,
-        textColor: Colors.white,
-        borderRadius: 10.0,
       ),
     );
   }

@@ -486,6 +486,9 @@ class _GameBoardState extends State<GameBoard> {
         builder: (context) => Dialog(
               backgroundColor: Colors.transparent,
               child: Responsive(
+                constraints: const BoxConstraints(
+                  maxWidth: 400,
+                ),
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 30),

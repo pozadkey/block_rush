@@ -1,6 +1,6 @@
+import 'package:block_rush/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'screens/home_screen.dart';
 import 'themes/theme.dart';
 
 void main() {
@@ -19,6 +19,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         theme: theme,
         debugShowCheckedModeBanner: false,
-        home: const HomeScreen());
+        home: const SplashScreen());
   }
 }
