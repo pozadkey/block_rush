@@ -1,5 +1,5 @@
 import 'package:block_rush/screens/game_board.dart';
-import 'package:block_rush/values.dart';
+import 'package:block_rush/constants/values.dart';
 import 'package:flutter/material.dart';
 
 class Piece {

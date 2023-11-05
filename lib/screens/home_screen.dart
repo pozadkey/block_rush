@@ -10,53 +10,54 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.black,
       body: SafeArea(
-        child: Stack(
-          children: [
-            // Background Image
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: const AssetImage('assets/images/background.jpg'),
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.5),
-                    BlendMode.dstATop,
+        child: Center(
+          child: Stack(
+            children: [
+              // Background Image
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: const AssetImage('assets/images/background.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Colors.black.withOpacity(0.5),
+                      BlendMode.dstATop,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Logo Image
-                  Image.asset(
-                    'assets/images/logo.png',
-                    width: 500,
+              Center(
+                child: AspectRatio(
+                  aspectRatio: 0.56,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Logo Image
+                      Image.asset(
+                        'assets/images/logo.png',
+                        width: 500,
+                      ),
+                      Text(
+                        'BLOCK RUSH',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.displayLarge,
+                      ),
+                      const SizedBox(height: 40),
+                      buildGameButton(
+                        context,
+                        'START GAME',
+                        100,
+                        const Color.fromARGB(255, 5, 201, 96), // Bright blue
+                      ),
+                    ],
                   ),
-                  const Text(
-                    'BLOCK RUSH',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      fontSize: 54,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-                  buildGameButton(
-                    context,
-                    'START GAME',
-                    100,
-                    const Color.fromARGB(255, 5, 201, 96), // Bright blue
-                  ),
-                ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

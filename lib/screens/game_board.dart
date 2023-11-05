@@ -5,7 +5,7 @@ import 'package:block_rush/components/piece.dart';
 import 'package:block_rush/components/pixel.dart';
 import 'package:block_rush/responsive/responsive.dart';
 import 'package:block_rush/screens/home_screen.dart';
-import 'package:block_rush/values.dart';
+import 'package:block_rush/constants/values.dart';
 import 'package:flutter/material.dart';
 
 /*
@@ -36,33 +36,38 @@ class _GameBoardState extends State<GameBoard> {
       color: Colors.red[800],
       fontSize: 40,
       fontWeight: FontWeight.w800,
+      fontFamily: 'ClashDisplay',
       letterSpacing: 0.5);
 
   // Game Paused message
   final gamePausedHeaderText = const TextStyle(
       color: Color.fromARGB(255, 255, 231, 13),
       fontSize: 40,
+      fontFamily: 'ClashDisplay',
       letterSpacing: 0.5,
       fontWeight: FontWeight.w800);
 
   final difficultyLevelHeaderText = const TextStyle(
     color: Color.fromARGB(255, 255, 255, 255),
     fontSize: 20,
+    fontFamily: 'ClashDisplay',
     fontWeight: FontWeight.w600,
   );
 
   // Score Text
   final scoreText = const TextStyle(
-      color: Colors.white,
-      fontSize: 32,
+      color: Colors.yellowAccent,
+      fontSize: 64,
+      fontFamily: 'ClashDisplay',
       fontWeight: FontWeight.w500,
       letterSpacing: 0.5);
 
   // Difficulty level  Text
   final difficultyLevelText = const TextStyle(
       color: Colors.white,
-      fontSize: 16,
+      fontSize: 18,
       fontWeight: FontWeight.w500,
+      fontFamily: 'ClashDisplay',
       letterSpacing: 0.2);
 
   // Current board piece
@@ -79,6 +84,9 @@ class _GameBoardState extends State<GameBoard> {
 
   // Active Game difficulty selection color
   Color difficultyLevel = Colors.purpleAccent;
+
+  // Create a random number generator
+  Random random = Random();
 
   @override
   void initState() {
@@ -284,9 +292,9 @@ class _GameBoardState extends State<GameBoard> {
       context: context,
       builder: (context) => Dialog(
         backgroundColor: Colors.transparent,
-        child: ConstrainedBox(
+        child: Responsive(
           constraints: const BoxConstraints(
-            maxWidth: 500,
+            maxWidth: 400,
           ),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
@@ -369,7 +377,7 @@ class _GameBoardState extends State<GameBoard> {
                 ),
                 FittedBox(
                   child: Text(
-                    'DIFFICULTY LEVEL',
+                    'DIFFICULTY  LEVEL:',
                     style: difficultyLevelHeaderText,
                     textAlign: TextAlign.center,
                   ),
@@ -477,14 +485,11 @@ class _GameBoardState extends State<GameBoard> {
         context: context,
         builder: (context) => Dialog(
               backgroundColor: Colors.transparent,
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxWidth: 500,
-                ),
+              child: Responsive(
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-                  height: 300,
+                  height: 400,
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: const Color.fromARGB(
@@ -495,56 +500,65 @@ class _GameBoardState extends State<GameBoard> {
                         255, 22, 22, 22), // Dialog background color
                     borderRadius: BorderRadius.circular(15.0),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      FittedBox(
-                        child: Text(
-                          'GAME OVER',
-                          style: gameOverHeaderText,
-                          textAlign: TextAlign.center,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        FittedBox(
+                          child: Text(
+                            'GAME OVER',
+                            style: gameOverHeaderText,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                      ),
-                      FittedBox(
-                        child: Text(
-                          'Score: ${currentScore * 10}'.toString(),
-                          style: scoreText,
-                          textAlign: TextAlign.center,
+                        const SizedBox(
+                          height: 20,
                         ),
-                      ),
-                      FittedBox(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            MyIconButton(
-                              bgdColor: const Color(0xFFE86060),
-                              onTap: () {
-                                pauseGame();
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HomeScreen()));
-                              },
-                              icon: const Icon(Icons.home),
-                            ),
-                            const SizedBox(
-                              width: 60,
-                            ),
-                            // resetGame
-                            MyIconButton(
-                              onTap: () {
-                                resetGame();
-                                Navigator.pop(context);
-                              },
-                              bgdColor: const Color(0xFFFFD166),
-                              icon: const Icon(Icons.restart_alt_rounded),
-                            ),
-                          ],
+                        FittedBox(
+                          child: Text(
+                            '${currentScore * 5}'.toString(),
+                            style: scoreText,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                      )
-                    ],
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        FittedBox(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              MyIconButton(
+                                bgdColor: const Color(0xFFE86060),
+                                onTap: () {
+                                  pauseGame();
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const HomeScreen()));
+                                },
+                                icon: const Icon(Icons.home),
+                              ),
+                              const SizedBox(
+                                width: 60,
+                              ),
+                              // resetGame
+                              MyIconButton(
+                                onTap: () {
+                                  resetGame();
+                                  Navigator.pop(context);
+                                },
+                                bgdColor: const Color(0xFFFFD166),
+                                icon: const Icon(Icons.restart_alt_rounded),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -556,126 +570,135 @@ class _GameBoardState extends State<GameBoard> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // Top Bar with Home Button, Score, and Pause Button
-            ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 500,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // Home Button
-                  MyIconButton(
-                    onTap: () async {
-                      pauseGame();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreen()));
-                    },
-                    icon: const Icon(Icons.home),
-                    bgdColor: Colors.purple[300],
+        child: Center(
+          child: AspectRatio(
+            aspectRatio: 0.56,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Top Bar with Home Button, Score, and Pause Button
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: 500,
                   ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        // Home Button
+                        MyIconButton(
+                          onTap: () async {
+                            pauseGame();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()));
+                          },
+                          icon: const Icon(Icons.home),
+                          bgdColor: Colors.purple[300],
+                        ),
 
-                  // Score Display
-                  Text(
-                    ' ${currentScore * 10}'.toString(),
-                    style: const TextStyle(
-                        color: Colors.yellowAccent,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold),
-                  ),
+                        // Score Display
+                        Text(
+                          ' ${currentScore * 5}'.toString(),
+                          style: const TextStyle(
+                              color: Colors.yellowAccent,
+                              fontSize: 40,
+                              fontFamily: 'ClashDisplay',
+                              fontWeight: FontWeight.bold),
+                        ),
 
-                  // Pause Button
-                  MyIconButton(
-                    onTap: () {
-                      pauseGame();
-                      showPausedGame();
-                    },
-                    icon: const Icon(Icons.pause),
-                    bgdColor: const Color(0xFFFFD166),
+                        // Pause Button
+                        MyIconButton(
+                          onTap: () {
+                            pauseGame();
+                            showPausedGame();
+                          },
+                          icon: const Icon(Icons.pause),
+                          bgdColor: const Color(0xFFFFD166),
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            // Game Grid
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Responsive(
-                child: GridView.builder(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: rowLength * colLength,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: rowLength, // Adjust for responsiveness
-                  ),
-                  itemBuilder: (context, index) {
-                    int row = (index / rowLength).floor();
-                    int col = index % rowLength;
-                    if (currentPiece.position.contains(index)) {
-                      return Pixel(
-                        color: currentPiece.color,
-                      );
-                    } else if (gameBoard[row][col] != null) {
-                      final Blockis? blockisType = gameBoard[row][col];
-                      return Pixel(
-                        color: blockisColors[blockisType],
-                      );
-                    } else {
-                      return Pixel(
-                        color: Colors.grey[900],
-                      );
-                    }
-                  },
                 ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            // Game Controls
-            ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 500,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // Button to move the piece to the left
-                  MyIconButton(
-                    onTap: moveLeft,
-                    icon: const Icon(Icons.arrow_back_ios),
-                    bgdColor: const Color(0xFF65AFFF),
-                    iconColor: Colors.white,
+                const SizedBox(
+                  height: 20,
+                ),
+                // Game Grid
+                Responsive(
+                  child: GridView.builder(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: rowLength * colLength,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: rowLength, // Adjust for responsiveness
+                    ),
+                    itemBuilder: (context, index) {
+                      int row = (index / rowLength).floor();
+                      int col = index % rowLength;
+                      if (currentPiece.position.contains(index)) {
+                        return Pixel(
+                          color: currentPiece.color,
+                        );
+                      } else if (gameBoard[row][col] != null) {
+                        final Blockis? blockisType = gameBoard[row][col];
+                        return Pixel(
+                          color: blockisColors[blockisType],
+                        );
+                      } else {
+                        return Pixel(
+                          color: Colors.grey[900],
+                        );
+                      }
+                    },
                   ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                // Game Controls
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: 500,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        // Button to move the piece to the left
+                        MyIconButton(
+                          onTap: moveLeft,
+                          icon: const Icon(Icons.arrow_back_ios),
+                          bgdColor: const Color(0xFF65AFFF),
+                          iconColor: Colors.white,
+                        ),
 
-                  // Button to rotate the piece
-                  MyIconButton(
-                    onTap: rotatePiece,
-                    icon: const Icon(Icons.rotate_right_rounded),
-                    bgdColor: const Color(0xFFFF6B6B),
-                    iconColor: Colors.white,
-                  ),
+                        // Button to rotate the piece
+                        MyIconButton(
+                          onTap: rotatePiece,
+                          icon: const Icon(Icons.rotate_right_rounded),
+                          bgdColor: const Color(0xFFFF6B6B),
+                          iconColor: Colors.white,
+                        ),
 
-                  // Button to move the piece to the right
-                  MyIconButton(
-                    onTap: moveRight,
-                    icon: const Icon(Icons.arrow_forward_ios),
-                    bgdColor: const Color(0xFF65AFFF),
-                    iconColor: Colors.white,
+                        // Button to move the piece to the right
+                        MyIconButton(
+                          onTap: moveRight,
+                          icon: const Icon(Icons.arrow_forward_ios),
+                          bgdColor: const Color(0xFF65AFFF),
+                          iconColor: Colors.white,
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

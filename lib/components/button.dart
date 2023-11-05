@@ -38,6 +38,8 @@ class MyButton extends StatelessWidget {
               color: textColor,
               fontWeight: FontWeight.bold,
               fontSize: 18,
+              letterSpacing: 0.2,
+              fontFamily: 'ClashDisplay',
             ),
           ),
         ),
