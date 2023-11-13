@@ -43,6 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
           width: opacity == 1.0 ? 500 : 0, // Slide in effect
           child: Image.asset(
             'assets/images/logo.png',
+            scale: 3,
           ),
         ),
       ),

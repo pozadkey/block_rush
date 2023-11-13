@@ -575,7 +575,7 @@ class _GameBoardState extends State<GameBoard> {
       body: SafeArea(
         child: Center(
           child: AspectRatio(
-            aspectRatio: 0.56,
+            aspectRatio: 0.5,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
