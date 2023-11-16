@@ -1,16 +1,54 @@
-# block_rush
+# Block Rush
 
-A new Flutter project.
+A fun puzzle game where you strategically clear lines for the best scores.
 
-## Getting Started
+# Screenshots
 
-This project is a starting point for a Flutter application.
+![Screenshot](https://github.com/pozadkey/block_rush/blob/master/screenshots/block_rush.jpg)
 
-A few resources to get you started if this is your first Flutter project:
+# Features:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+🧠 Strategic Puzzles: Challenge yourself with dynamic puzzles that require quick thinking and clever moves. Clear lines strategically to unlock new levels and unveil hidden challenges.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🎮 Intuitive Controls: Enjoy a seamless gaming experience with user-friendly controls. Navigate through vibrant blocks effortlessly as you strive to master each level.
+
+🌈 Immersive Graphics: Immerse yourself in a visually stunning world filled with vibrant colors and captivating graphics. Each level is a feast for the eyes!
+
+# Requirements
+
+- [Flutter SDK](https://docs.flutter.dev/get-started/install)
+
+- [Android Studio](https://developer.android.com/studio)
+
+- [Xcode](https://developer.apple.com/xcode/)
+
+# Usage
+
+- Clone this repo via the link below:
+
+> [https://github.com/pozadkey/block_rush](https://github.com/pozadkey/block_rush/)
+
+
+- Open the project's root folder and excute the following command to get the dependencies
+
+```
+flutter pub get
+```
+
+# Run app on devices
+
+- Check for connected devices
+
+```
+flutter devices
+```
+- Excute to run app on devices
+```
+flutter run
+```
+
+# Live Preview
+
+[Android](https://play.google.com/store/apps/details?id=com.pozadkey.block_rush)
+
+
